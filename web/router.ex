@@ -13,8 +13,14 @@ defmodule Vlogger.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :browser_session do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+    plug Vlogger.CurrentUser
+  end
+
   scope "/", Vlogger do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :browser_session] 
 
     get "/", PageController, :index
     resources "/users", UserController

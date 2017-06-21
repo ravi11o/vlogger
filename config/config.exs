@@ -22,6 +22,14 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+# Config Guardian
+config :guardian, Guardian,
+ issuer: "Vlogger.#{Mix.env}",
+ ttl: {30, :days},
+ verify_issuer: true,
+ serializer: Vlogger.GuardianSerializer,
+ secret_key: "4xrcwLHJSYMEldYJU8AgLfbvpotJFq/No0xO28U41cNsIeeh4QasqfsWksyXSBPy"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
