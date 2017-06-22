@@ -6,6 +6,7 @@ defmodule Vlogger.Video do
     field :title, :string
     field :description, :string
     belongs_to :user, Vlogger.User
+    belongs_to :category, Vlogger.Category
 
     timestamps()
   end
@@ -15,7 +16,7 @@ defmodule Vlogger.Video do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:url, :title, :description])
+    |> cast(params, [:url, :title, :description, :category_id])
     |> validate_required([:url, :title, :description])
   end
 end
