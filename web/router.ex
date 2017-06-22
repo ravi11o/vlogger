@@ -27,6 +27,12 @@ defmodule Vlogger.Router do
     resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 
+  scope "/manage", Vlogger do
+    pipe_through [:browser, :browser_session, :authenticate_user]
+
+    resources "/videos", VideoController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", Vlogger do
   #   pipe_through :api

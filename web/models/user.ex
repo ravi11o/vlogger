@@ -6,6 +6,7 @@ defmodule Vlogger.User do
     field :username, :string, null: false
     field :password, :string, virtual: true
     field :password_hash, :string
+    has_many :videos, Vlogger.Video
 
     timestamps()
   end

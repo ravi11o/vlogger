@@ -36,6 +36,7 @@ defmodule Vlogger.Web do
 
       import Vlogger.Router.Helpers
       import Vlogger.Gettext
+      import Vlogger.AuthenticateUser
     end
   end
 
@@ -58,6 +59,8 @@ defmodule Vlogger.Web do
   def router do
     quote do
       use Phoenix.Router
+
+      import Vlogger.AuthenticateUser
     end
   end
 
