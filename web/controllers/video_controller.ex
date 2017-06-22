@@ -23,7 +23,6 @@ defmodule Vlogger.VideoController do
 
   def create(conn, %{"video" => video_params}, user) do
     video_params = Map.update!(video_params, "category_id", &(string_to_int(&1)))
-    IO.inspect(video_params)
     changeset = 
       user
       |> build_assoc(:videos)
@@ -51,7 +50,7 @@ defmodule Vlogger.VideoController do
   end
 
   def update(conn, %{"id" => id, "video" => video_params}, user) do
-    #IO.inspect(video_params["category_id"])
+    video_params = Map.update!(video_params, "category_id", &(string_to_int(&1)))
     video = Repo.get!(user_videos(user), id)
     changeset = Video.changeset(video, video_params)
 
