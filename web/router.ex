@@ -25,6 +25,7 @@ defmodule Vlogger.Router do
     get "/", PageController, :index
     resources "/users", UserController
     resources "/sessions", SessionController, only: [:new, :create, :delete]
+    get "/watch/:id", WatchController, :show
   end
 
   scope "/manage", Vlogger do
