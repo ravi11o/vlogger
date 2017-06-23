@@ -49,6 +49,7 @@ defmodule Vlogger.VideoController do
   end
 
   def update(conn, %{"id" => id, "video" => video_params}, user) do
+    IO.inspect(video_params)
     video = Repo.get!(user_videos(user), id)
     changeset = Video.changeset(video, video_params)
 
