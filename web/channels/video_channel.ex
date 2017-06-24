@@ -2,14 +2,16 @@ defmodule Vlogger.VideoChannel do
   use Vlogger.Web, :channel
 
   def join("videos:" <> video_id, _params, socket) do
-    :timer.send_interval(5000, :ping)
     {:ok, socket}
   end
 
-  def handle_info(:ping, socket) do
-    count = socket.assigns[:count] || 1
-    push socket, "ping", %{count: count}
+  def handle_in("new_annotation", params, socket) do
+    broadcast! socket, "new_annotation", %{
+      user: %{username: "ravi"},
+      body: params["body"],
+      at: params["at"]
+    }
 
-    {:noreply, assign(socket, :count, count + 1)}
+    {:reply, :ok, socket}
   end
 end
