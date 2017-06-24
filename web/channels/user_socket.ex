@@ -2,7 +2,7 @@ defmodule Vlogger.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", Vlogger.RoomChannel
+   channel "videos:*", Vlogger.VideoChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
