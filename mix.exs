@@ -19,7 +19,7 @@ defmodule Vlogger.Mixfile do
   def application do
     [mod: {Vlogger, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :comeonin, :guardian, :slugger]]
+                    :phoenix_ecto, :postgrex, :comeonin, :guardian, :slugger, :joken]]
   end
 
   # Specifies which paths to compile per environment.
@@ -40,7 +40,8 @@ defmodule Vlogger.Mixfile do
      {:cowboy, "~> 1.0"},
      {:comeonin, "~> 3.0"},
      {:guardian, "~> 0.14.4"},
-     {:slugger, "~> 0.2.0"}]
+     {:slugger, "~> 0.2.0"}, 
+     {:joken, "~> 1.5"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

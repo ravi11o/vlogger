@@ -44,6 +44,6 @@ defmodule Vlogger.SessionController do
   end
 
   defp login(conn, user) do
-    Guardian.Plug.sign_in(conn, user)
+    Guardian.Plug.sign_in(conn, user, :token)
   end
 end

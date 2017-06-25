@@ -22,6 +22,9 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+# guardian JWT
+config :joken, config_module: Guardian.JWT
+
 # Config Guardian
 config :guardian, Guardian,
  issuer: "Vlogger.#{Mix.env}",

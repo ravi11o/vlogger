@@ -10,6 +10,7 @@ defmodule Vlogger.Video do
     field :slug, :string
     belongs_to :user, Vlogger.User
     belongs_to :category, Vlogger.Category
+    has_many :annotations, Vlogger.Annotation
 
     timestamps()
   end

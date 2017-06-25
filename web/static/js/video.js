@@ -5,7 +5,8 @@ let Video = {
   init(socket, element) { if(!element){ return }
     let playerId = element.getAttribute("data-player-id")
     let videoId = element.getAttribute("data-id")
-    socket.connect()
+    let guardianToken = jQuery('meta[name="guardian_token"]').attr('content')
+    socket.connect({guardian_token: guardianToken})
     Player.init(element.id, playerId, () => {
       this.onReady(videoId, socket)
     })
@@ -15,6 +16,7 @@ let Video = {
     let msgContainer = document.getElementById("msg-container")
     let msgInput = document.getElementById("msg-input")
     let postButton = document.getElementById("msg-submit")
+    
     let vidChannel = socket.channel("videos:" + videoId)
 
     postButton.addEventListener("click", e => {
